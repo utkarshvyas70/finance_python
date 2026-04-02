@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: finance-tracker-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_KEY
+        value: change-me-before-deploying
+      - key: DATABASE_URL
+        value: sqlite:///./finance_tracker.db
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 60
